@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Birthday Display</title>
+</head>
+<body>
+  <div class="result-box">
+    <script>
+      function displayBirthdays(birthdays) {
+        document.write('<h2>Birthday Display</h2>');
+
+        if (birthdays.length === 0) {
+          document.write('<p>No birthdays in the selected date range for the specified month.</p>');
+        } else {
+          const sortedBirthdays = birthdays.sort((a, b) => a.date - b.date);
+          sortedBirthdays.forEach(birthday => {
+            document.write(`<p>${birthday.name}'s birthday: ${birthday.date}/${birthday.month}</p>`);
+          });
+        }
+      }
+
+      // Retrieve birthdays from the opener window
+      const openerWindow = window.opener;
+      if (openerWindow) {
+        const birthdays = openerWindow.birthdayData;
+        displayBirthdays(birthdays);
+      }
+    </script>
+  </div>
+</body>
+</html>
