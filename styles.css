@@ -56,3 +56,21 @@ h1 {
   font-size: 40px;
   margin: 20px;
 }
+/* Add these styles to your existing styles.css file */
+#submitButton {
+  background-color: #750d37; /* Match the background color */
+  color: #fff; /* Text color */
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px; /* Add border-radius for a curved appearance */
+  cursor: pointer;
+  transition: background-color 0.3s; /* Add a smooth transition effect */
+
+  /* Additional styles for better appearance */
+  font-size: 16px;
+  font-weight: bold;
+}
+
+#submitButton:hover {
+  background-color: #5c0a2b; /* Darken the background color on hover */
+}

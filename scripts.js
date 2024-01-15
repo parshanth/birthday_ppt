@@ -1,3 +1,4 @@
+// scripts.js
 document.addEventListener('DOMContentLoaded', () => {
   const submitButton = document.getElementById('submitButton');
 
@@ -6,29 +7,35 @@ document.addEventListener('DOMContentLoaded', () => {
     const startDate = document.getElementById('startDate').value;
     const endDate = document.getElementById('endDate').value;
 
-    const birthdays = [
-      { name: 'Parshanth', date: '18', month: '05' },
-      { name: 'Jeyanthi', date: '31', month: '01' },{ name: 'Talisha', date: '04', month: '05' },{ name: 'Martin Sundar Singh', date: '09', month: '04' },{ name: 'Thayamal', date: '25', month: '06' },
-      // Add more data if needed
+    const events = [
+      { name: 'Parshanth', date: '18', month: '05', type: 'Birthday' },
+      { name: 'Jeyanthi', date: '31', month: '01', type: 'Birthday' },
+      { name: 'Talisha', date: '04', month: '05', type: 'Birthday' },
+      { name: 'Martin Sundar Singh', date: '09', month: '04', type: 'Birthday' },
+      { name: 'Thayamal', date: '25', month: '06', type: 'Birthday' },{ name: 'Augustin', date: '02', month: '09',type:'Birthday' },
+      // Add more birthday data if needed
+      { name: 'John', date: '10', month: '05', type: 'Anniversary' },
+      { name: 'Jane', date: '20', month: '05', type: 'Anniversary' },
+      // Add more anniversary data if needed
     ];
 
-    const birthdaysInRange = filterBirthdaysByDateRange(birthdays, selectedMonth, startDate, endDate);
+    const eventsInRange = filterEventsByDateRange(events, selectedMonth, startDate, endDate);
 
-    openDisplayWindow(birthdaysInRange);
+    openDisplayWindow(eventsInRange);
   });
 
-  function openDisplayWindow(birthdays) {
-    const displayWindow = window.open('', 'Birthday Display', 'width=400,height=400,resizable=yes,scrollbars=yes');
-    displayWindow.document.write('<html><head><title>Birthday Display</title>');
+  function openDisplayWindow(events) {
+    const displayWindow = window.open('', 'Event Display', 'width=400,height=400,resizable=yes,scrollbars=yes');
+    displayWindow.document.write('<html><head><title>Event Display</title>');
     displayWindow.document.write('<link rel="stylesheet" href="styles.css"></head><body>');
     displayWindow.document.write('<div class="result-box">');
 
-    if (birthdays.length === 0) {
-      displayWindow.document.write('<p>No birthdays in the selected date range for the specified month.</p>');
+    if (events.length === 0) {
+      displayWindow.document.write('<p>No events in the selected date range for the specified month.</p>');
     } else {
-      const sortedBirthdays = birthdays.sort((a, b) => a.date - b.date);
-      sortedBirthdays.forEach(birthday => {
-        displayWindow.document.write(`<p>${birthday.name}'s birthday: ${birthday.date}/${birthday.month}</p>`);
+      const sortedEvents = events.sort((a, b) => a.date - b.date);
+      sortedEvents.forEach(event => {
+        displayWindow.document.write(`<p>${event.name}'s ${event.type}: ${event.date}/${event.month}</p>`);
       });
     }
 
@@ -36,11 +43,11 @@ document.addEventListener('DOMContentLoaded', () => {
     displayWindow.document.close();
   }
 
-  function filterBirthdaysByDateRange(birthdays, selectedMonth, startDate, endDate) {
-    return birthdays.filter(birthday => (
-      birthday.month === selectedMonth &&
-      birthday.date >= startDate &&
-      birthday.date <= endDate
+  function filterEventsByDateRange(events, selectedMonth, startDate, endDate) {
+    return events.filter(event => (
+      event.month === selectedMonth &&
+      event.date >= startDate &&
+      event.date <= endDate
     ));
   }
 });

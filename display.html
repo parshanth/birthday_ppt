@@ -1,34 +1,49 @@
+<!-- display.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="styles.css">
-  <title>Birthday Display</title>
+  <title>Event Display</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: space-around;
+    }
+
+    .result-box {
+      width: 45%;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      margin: 20px;
+      max-width: 400px;
+      background-color: #fff; /* Set background color for result box */
+      color: #333; /* Set text color for result box */
+      font-size: 16px; /* Adjust font size as needed */
+    }
+
+    h2 {
+      color: #ededed;
+      font-family: 'Courier New', Courier, monospace;
+      font-weight: 1000;
+      font-size: 30px;
+    }
+  </style>
 </head>
 <body>
-  <div class="result-box">
-    <script>
-      function displayBirthdays(birthdays) {
-        document.write('<h2>Birthday Display</h2>');
-
-        if (birthdays.length === 0) {
-          document.write('<p>No birthdays in the selected date range for the specified month.</p>');
-        } else {
-          const sortedBirthdays = birthdays.sort((a, b) => a.date - b.date);
-          sortedBirthdays.forEach(birthday => {
-            document.write(`<p>${birthday.name}'s birthday: ${birthday.date}/${birthday.month}</p>`);
-          });
-        }
-      }
-
-      // Retrieve birthdays from the opener window
-      const openerWindow = window.opener;
-      if (openerWindow) {
-        const birthdays = openerWindow.birthdayData;
-        displayBirthdays(birthdays);
-      }
-    </script>
+  <div class="result-box" id="birthdayContainer">
+    <h2>Birthday Display</h2>
+    <!-- Content will be dynamically generated here -->
   </div>
+
+  <div class="result-box" id="anniversaryContainer">
+    <h2>Anniversary Display</h2>
+    <!-- Content will be dynamically generated here -->
+  </div>
+
+  <script src="display.js"></script>
 </body>
 </html>
