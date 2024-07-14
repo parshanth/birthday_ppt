@@ -9,14 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const events = [
       { name: 'Parshanth', date: '18', month: '05', type: 'Birthday' },
-      { name: 'Jeyanthi', date: '31', month: '01', type: 'Birthday' },
-      { name: 'Talisha', date: '04', month: '05', type: 'Birthday' },
-      { name: 'Martin Sundar Singh', date: '09', month: '04', type: 'Birthday' },
-      { name: 'Thayamal', date: '25', month: '06', type: 'Birthday' },{ name: 'Augustin', date: '02', month: '09',type:'Birthday' },
-      // Add more birthday data if needed
-      { name: 'John', date: '10', month: '05', type: 'Anniversary' },
-      { name: 'Jane', date: '20', month: '05', type: 'Anniversary' },
-      // Add more anniversary data if needed
+     
     ];
 
     const eventsInRange = filterEventsByDateRange(events, selectedMonth, startDate, endDate);
